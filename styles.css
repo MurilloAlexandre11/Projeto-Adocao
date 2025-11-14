@@ -1,0 +1,300 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header e Navegação */
+.banner {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.banner nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.banner nav a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.banner nav a:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Título Principal */
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    padding: 1rem;
+}
+
+/* Formulário */
+.form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form input, .form select {
+    padding: 1rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f7fafc;
+    width: 100%;
+}
+
+.form input:focus, .form select:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.form input::placeholder {
+    color: #a0aec0;
+}
+
+#adicionar {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#adicionar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+#adicionar:active {
+    transform: translateY(-1px);
+}
+
+/* Listas de Pets */
+.lista {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    max-width: 900px;
+    margin: 2rem auto;
+    min-height: 200px;
+}
+
+.lista h3 {
+    color: #4a5568;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 1rem;
+}
+
+/* Itens dos Pets */
+.lista p {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    color: #2d3748;
+    position: relative;
+    overflow: hidden;
+}
+
+.lista p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lista p:hover {
+    transform: translateX(8px);
+    border-color: #667eea;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.lista p:hover::before {
+    opacity: 1;
+}
+
+/* Cores diferentes para cada lista */
+#adocaoPets p {
+    border-left: 4px solid #48bb78;
+}
+
+#avaliacaoPets p {
+    border-left: 4px solid #ed8936;
+}
+
+#listaPets p {
+    border-left: 4px solid #667eea;
+}
+
+/* Estados vazios */
+.lista:empty::after {
+    content: "Nenhum pet cadastrado nesta categoria.";
+    display: block;
+    text-align: center;
+    color: #a0aec0;
+    font-style: italic;
+    padding: 3rem;
+    font-size: 1.1rem;
+}
+
+.lista:not(:has(p))::after {
+    content: "Nenhum pet cadastrado nesta categoria.";
+    display: block;
+    text-align: center;
+    color: #a0aec0;
+    font-style: italic;
+    padding: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner nav {
+        gap: 1rem;
+        flex-direction: column;
+    }
+    
+    .banner nav a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+    
+    .form {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        margin: 0 1rem 2rem;
+    }
+    
+    .lista {
+        padding: 2rem;
+        margin: 1.5rem 1rem;
+    }
+    
+    .lista h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        padding: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+        padding: 0.5rem;
+    }
+    
+    .form {
+        padding: 1.5rem;
+    }
+    
+    .form input, .form select, #adicionar {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .lista {
+        padding: 1.5rem;
+    }
+    
+    .lista p {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animações */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lista p {
+    animation: slideIn 0.4s ease;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Destaque para as seções quando navegando */
+.lista:target {
+    animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+    0% { background-color: white; }
+    50% { background-color: #f0fff4; }
+    100% { background-color: white; }
+}
